@@ -34,9 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     #[Assert\Regex(
-        pattern: '/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{12,}/',
+        pattern: '/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}/',
         match: true,
-        message: 'Le mot de passe doit contenir des lettres min, maj, nombre et 12 caractères min',
+        message: 'Le mot de passe doit contenir des lettres min, maj, nombre et 8 caractères min',
     )]
     private ?string $password = null;
 
