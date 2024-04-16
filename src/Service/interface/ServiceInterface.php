@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\interface;
 
 interface ServiceInterface{
     public function create(Object $object);

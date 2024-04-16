@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Service\interface\ServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserService implements ServiceInterface

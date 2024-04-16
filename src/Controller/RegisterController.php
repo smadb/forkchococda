@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Service\EmailService;
 use App\Service\FileUploadService;
+use App\Service\UserService;
 
 class RegisterController extends AbstractController
 {
@@ -21,7 +22,8 @@ class RegisterController extends AbstractController
         private readonly UserPasswordHasherInterface $hash,
         private readonly EmailService $emailService,
         private readonly UserRepository $userRepository,
-        private readonly FileUploadService $fileUploadService
+        private readonly FileUploadService $fileUploadService,
+        private readonly UserService $userService
     ) {
     }
     #[Route('/register', name: 'app_register_create')]
@@ -46,8 +48,7 @@ class RegisterController extends AbstractController
                     //set du nom de l'image
                     $user->setImage($imageFileName);
                 }
-                $this->em->persist($user);
-                $this->em->flush();
+                $this->userService->create($user);
                 $body = $this->render('email/activation.html.twig', ["id" => $user->getId()]);
                 $this->emailService->sendEmail($user->getEmail(), "Activation du compte", $body->getContent());
                 $type = 'success';
