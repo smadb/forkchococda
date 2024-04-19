@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chocoblasts{% endblock %}
+
+{% block body %}
+
+    {% for chocoblast in chocoblasts %}
+
+        <div class="chocoblast {% if chocoblast.status %} {%else %} inactive {%endif %}" >
+
+            <img class='img' src="/uploads/images/{{ chocoblast.target.image }}" alt="" width="50px">
+
+            <div class="infos">
+                <h2>{{ chocoblast.title }}</h2>
+                <p>Auteur : {{ chocoblast.author }}</p>
+                <p>Cible  : {{ chocoblast.target }}</p>
+                <p>Date : {{ chocoblast.createAt | date('Y-m-d') }}</p>
+                <div>______________________</div>
+                {% if chocoblast.status %}
+                    <p>Chocoblast is <i style="color: #1b9448" class="fullopacity">active</i></p>
+                {% else %}
+                    <p>Chocoblast is <i style="color: red" class="fullopacity">inactive</i></p>
+                {% endif %}
+                <div>______________________</div>
+
+            </div>
+            <div class="manage">
+                <input class="fullopacity" type="checkbox" {% if chocoblast.status %}value="active" {% else %}value="inactive"{% endif %} {% if chocoblast.status %}checked{% endif %} onchange="changeStatus(this, {{ chocoblast.id }})">
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <script>
+        function changeStatus($event,chocoblastId){
+            if($event.value === 'active'){
+                location.href=`/chocoblast/inactive/${chocoblastId}`
+            }
+            else if($event.value === 'inactive'){
+                location.href=`/chocoblast/active/${chocoblastId}`
+            }
+            else{
+                console.error($event)
+            }
+        }
+    </script>
+
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .chocoblast{
+            position: relative;
+            width: 400px;
+            min-width: 340px;
+            display: grid;
+            grid-auto-flow: column;
+            margin: 20px;
+            padding: 40px;
+            border: 1px solid black;
+            background: #4b4b4b;
+            color: white;
+        }
+        .inactive{
+            opacity: 0.8;
+        }
+        .fullopacity{
+            opacity: 1;
+        }
+        .infos{
+            justify-self: center;
+            position: relative;
+        }
+        .manage{
+            display: flex;
+            align-items: center;
+
+        }
+        .img{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+{% endblock %}
+

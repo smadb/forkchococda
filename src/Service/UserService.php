@@ -36,7 +36,7 @@ class UserService implements ServiceInterface
             throw new \Exception("Le compte n'existe pas");
         }
     }
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $user = $this->userRepository->find($id);
         if($user) {

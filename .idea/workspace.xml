@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d13aa9c9-58f0-4a76-83dd-9507f6fac97f" name="Changes" comment="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files." />
+    <list default="true" id="d13aa9c9-58f0-4a76-83dd-9507f6fac97f" name="Changes" comment="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files.">
+      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/chocoblast/manageChocoblast.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/chocoblast/showChocoblast.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users/showAllUsers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_09_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_09_55__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ChocoblastController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ChocoblastController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ChocoblastRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ChocoblastRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CommentaryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentaryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chocoblast/showAllChocoblast.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chocoblast/showAllChocoblast.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +182,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-autocomplete" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -181,7 +196,9 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;PHPUnit.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dev/Desktop/CR_mai/symfony/forkchococda&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -189,6 +206,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dev\\AppData\\Local\\Programs\\PhpStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -295,6 +313,7 @@
     <MESSAGE value="Update ServiceInterface and add UserService&#10;&#10;Refined ServiceInterface by specifying 'Object' for 'create' function parameter, and a return type of 'array' for 'findAll'. Additionally, a UserService has been added, which realizes the ServiceInterface and provides methods to manage User entities including error handling." />
     <MESSAGE value="Refactor services and add new services&#10;&#10;The ServiceInterface has been moved under the interface directory. UserService now uses this interface instead of directly using the EntityManager. Two new services, CommentService and ChocoblastService, have been added following the same pattern. This updates the way objects are created in the RegisterController by delegating to the new UserService." />
     <MESSAGE value="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files." />
+    <MESSAGE value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="a" />
   </component>
 </project>

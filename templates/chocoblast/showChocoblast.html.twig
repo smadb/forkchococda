@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des chocoblasts{% endblock %}
+{% block title %}Votre chocoblast{% endblock %}
 
 {% block body %}
-
         <div>
             <h2>{{ chocoblast.title }}</h2>
             <p>Auteur : {{ chocoblast.author }}</p>
@@ -11,5 +10,4 @@
             <img src="/uploads/images/{{ chocoblast.target.image }}" alt="" width="50px">
             <p>Date : {{ chocoblast.createAt | date('Y-m-d') }}</p>
         </div>
-    {% endfor %}
 {% endblock %}

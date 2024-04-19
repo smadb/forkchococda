@@ -56,4 +56,13 @@ class ChocoblastRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
         }
+
+
+    public function getChocoblastByUserId(int $id){
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.author = :val')
+            ->setParameter('val', $id)
+            ->getQuery()
+            ->getResult();
+    }
 }

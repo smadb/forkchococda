@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Rôle</th>
+                <th>Changer Rôle</th>
+                <th>Liste des Commentaires</th>
+                <th>Liste des Chocoblasts</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>
+                    {{ user.roles[0] }}
+                <td>
+                    <button onclick="makeAdmin({{ user.id }})">
+                        Make admin
+                    </button>
+                </td>
+
+                <td>
+                    liste des commentaires
+                </td>
+
+                <td style="display: flex; flex-wrap: wrap;max-width: 300px">
+                    {% for chocoblast in userChocoblasts[user.id] %}
+                        <a style="margin-right: 5px" href="#" onclick="openManageChocoblast({{ chocoblast.id }})">{{ chocoblast.title }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+            <!-- Ajoutez plus d'utilisateurs ici -->
+            </tbody>
+        </table>
+
+    <script>
+
+        function openManageChocoblast(id){
+            location.href= `/chocoblast/manage/${id}`;
+        }
+
+        function makeAdmin(id){
+
+                location.href=`/user/changerole/${id}`
+
+        }
+
+    </script>
+
+    <style>
+
+        table{
+            margin: 100px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        td{
+            padding: 15px;
+        }
+
+        tr{
+            border-bottom: solid 1px black;
+        }
+    </style>
+
+{% endblock %}

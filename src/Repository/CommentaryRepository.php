@@ -45,4 +45,13 @@ class CommentaryRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function countCommentaryByUserId(int $id){
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.author = :val')
+            ->setParameter('val', $id)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
