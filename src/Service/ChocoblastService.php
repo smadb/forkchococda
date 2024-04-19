@@ -20,7 +20,7 @@ class ChocoblastService implements ServiceInterface
             $this->em->flush();
         }
         else{
-            throw new \Exception("Le chocoblast existe déja");
+            throw new \Exception("Le chocoblast existe deja");
         }
     }
 
@@ -48,10 +48,18 @@ class ChocoblastService implements ServiceInterface
     public function findOneBy(int $id): object{
         return $this->chocoblastRepository->find($id)??throw new \Exception("Le chocoblast n'existe pas");
     }
-    public function findActive(): array{
-        return $this->chocoblastRepository->findBy(["status"=>true])??throw new \Exception("Le chocoblast n'existe pas");
+    public function findActiveOrNot(bool $status): array{
+        return $this->chocoblastRepository->findBy(["status"=>$status])??throw new \Exception("Il n'y à aucun chocoblast actifs en BDD");
     }
     public function findAll(): array{
         return $this->chocoblastRepository->findAll()??throw new \Exception("Il n'y à aucun chocoblast en BDD");
+    }
+
+    public function getCountChocoblastAuthor(): array {
+        return $this->chocoblastRepository->topChocoblastAuthor();
+    }
+
+    public function getCountChocoblastTarget(): array {
+        return $this->chocoblastRepository->topChocoblastTarget();
     }
 }

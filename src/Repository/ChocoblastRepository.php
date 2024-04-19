@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Chocoblast;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\DTO\TopChocoblastAuthorDTO;
 /**
  * @extends ServiceEntityRepository<Chocoblast>
  *
@@ -57,12 +57,27 @@ class ChocoblastRepository extends ServiceEntityRepository
                 ->getResult();
         }
 
+        /**
+         * @return TopChocoblastAuthorDTO[]
+         */
+        public function topChocoblastAuthor() {
+            return $this->createQueryBuilder('c')
+                ->select('NEW App\DTO\TopChocoblastAuthorDTO(u.firstname, u.lastname, COUNT(u.id))')
+                ->innerJoin('c.author', 'u')
+                ->groupBy('u.id')
+                ->getQuery()
+                ->getResult();
+        }
 
-    public function getChocoblastByUserId(int $id){
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.author = :val')
-            ->setParameter('val', $id)
-            ->getQuery()
-            ->getResult();
-    }
+                /**
+         * @return TopChocoblastAuthorDTO[]
+         */
+        public function topChocoblastTarget() {
+            return $this->createQueryBuilder('c')
+                ->select('NEW App\DTO\TopChocoblastAuthorDTO(u.firstname, u.lastname, COUNT(u.id))')
+                ->innerJoin('c.target', 'u')
+                ->groupBy('u.id')
+                ->getQuery()
+                ->getResult();
+        }
 }

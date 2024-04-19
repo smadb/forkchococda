@@ -5,11 +5,24 @@
 {% block body %}
 
         <div>
+<h2 class="choco-title">Liste des chocoblasts</h2>
+<div class="choco-container">
+    {% for chocoblast in chocoblasts %}
+        <div class="chocoblast">
             <h2>{{ chocoblast.title }}</h2>
             <p>Auteur : {{ chocoblast.author }}</p>
             <p>Cible  : {{ chocoblast.target }}</p>
             <img src="/uploads/images/{{ chocoblast.target.image }}" alt="" width="50px">
             <p>Date : {{ chocoblast.createAt | date('Y-m-d') }}</p>
+            <img src="/uploads/images/{{ chocoblast.target.image }}" alt=""width="50px">
+            <p>Date : {{ chocoblast.createAt | date('d/m/Y') }}</p>
+            <div class="comments">
+                {{ render(path('app_commentary_all', {id: chocoblast.id})) }}
+                {% if app.user.userIdentifier is defined %}
+                {{ render(path('app_commentary_add', {id: chocoblast.id})) }}
+                {% endif %}
+            </div>
         </div>
     {% endfor %}
+</div>
 {% endblock %}

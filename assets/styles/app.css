@@ -1,29 +1,130 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 body{
+    margin: 0;
+    padding: 0;
     font-family: Roboto;
 }
-form{
+/* Formulaires */
+form.choco, form.register, form.login{
     display: flex;
     flex-direction: column;
     width: 40vw;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 25vh;
+    margin-top: 4vh;
     gap: 20px;
     div{
         display: flex;
         flex-direction: column;
         width: 40vw;
+        label{
+            font-size: 1.1rem;
+        }
         input{
             margin-top: 2vh;
             height: 3vh;
         }
     }
     button[type="submit"]{
-        width: 10vw;
+        width: 15vw;
+        height: 4vh;
+        font-size: 1.2rem;
         background-color: rgb(18, 145, 224);
+        border-radius: 20px;
         border: 0;
-        justify-self: flex-end;
         align-self: flex-end;
+        color:whitesmoke;
     }
+}
+form.login{
+    margin-top: 20vh;
+}
+form.choco{
+    margin-top: 2vh;
+    select, input[type="text"], input[type="date"]{
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        height: 4vh;
+    }
+    button[type="submit"]{
+        margin-top: 6vh;
+    }
+}
+.chocoblast-title{
+    margin-top:15vh;
+    text-align: center;
+}
+/* Alert message */
+.alert{
+    position: absolute;
+    bottom: 3vh;
+    left: 0;
+    height: 3vh;
+    width: 99vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0.5vw;
+    font-size: 1.2rem;
+}
+.success{
+    background-color:rgb(200, 244, 201);
+    color: green;
+}
+.danger{
+    background-color:rgb(241, 193, 193);
+    color: red;
+}
+.warning{
+    background-color:rgb(242, 241, 193);
+    color:orange;
+}
+/* Navbar*/
+nav>ul{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    height: 4vh;
+    background-color: rgb(34, 129, 224);
+    li{
+        list-style-type:none;
+    }
+    li>a{
+        text-decoration:none;
+        color: whitesmoke;
+    }
+}
+.choco-container{
+    display: flex;
+    width: 98vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    gap: 2vw;
+}
+.choco-title{
+    text-align: center;
+}
+.chocoblast{
+    padding: 1vw;
+    margin-top: 2vh;
+    width: 25vw;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    height: fit-content;
+    font-size: 0.9rem;
+    h5{
+        font-size: 0.8rem;
+    }
+}
+.comment-form{
+    padding: 1vw;
+    background-color: rgb(234, 234, 234);
+    border-radius: 20px;
 }

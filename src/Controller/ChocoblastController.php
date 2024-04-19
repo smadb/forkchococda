@@ -11,30 +11,42 @@ use App\Form\ChocoblastType;
 use App\Entity\Chocoblast;
 use App\Repository\ChocoblastRepository;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ChocoblastController extends AbstractController
 {
+    public function __construct(
+        private readonly ChocoblastService $chocoblastService
+    ) {
+    }
+
     #[Route('/chocoblast/add', name: 'app_chocoblast_add')]
     public function create(
         Request $request,
         ChocoblastService $chocoblastService
     ): Response {
 
-        $chocoblast =new Chocoblast();
+        $chocoblast = new Chocoblast();
         //création du formulaire
         $form = $this->createForm(ChocoblastType::class, $chocoblast);
         //récupération de la requête
         $form->handleRequest($request);
         //test si le formulaire est submit
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             try {
                 //ajout du chocoblast en BDD
                 $chocoblast->setStatus(false);
-                $chocoblastService->create($chocoblast);
+                $chocoblast->setAuthor($this->getUser());
+                $this->chocoblastService->create($chocoblast);
+                $msg = "le chocoblast a ete ajoute";
+                $type = "success";
             } catch (\Throwable $th) {
                 $this->addFlash("danger", $th->getMessage());
                 echo $th->getMessage();
+                $msg = $th->getMessage();
+                $type = "danger";
             }
+            $this->addFlash($type, $msg);
         }
         return $this->render('chocoblast/addChocoblast.html.twig', [
             'formulaire' => $form,
@@ -42,9 +54,11 @@ class ChocoblastController extends AbstractController
     }
 
     #[Route('/chocoblast/all', name:'app_chocoblast_all')]
-    public function showAllChocoblast(ChocoblastService $chocoblastService):Response 
+    public function showAllChocoblast(ChocoblastService $chocoblastService):Response
     {
         $chocoblasts = $chocoblastService->findAll();
+        $chocoblasts = $this->chocoblastService->findActiveOrNot(true);
+
         return $this->render('chocoblast/showAllChocoblast.html.twig', [
             'chocoblasts' => $chocoblasts,
         ]);
@@ -129,9 +143,49 @@ class ChocoblastController extends AbstractController
         return $this->redirectToRoute($lastRoute,$parameters);
     }
 
-    #[Route('/chocoblast/exemple', name:'app_chocoblast_exemple')]
-    public function exemple(ChocoblastRepository $chocoblastRepository) {
-        dd($chocoblastRepository->countChocoblast());
+    #[IsGranted('ROLE_USER')]
+    #[Route('/chocoblast/all/inactive', name: 'app_chocoblast_all_inactive')]
+    public function showAllChocoblastInactive(): Response
+    {
+        $chocoblasts = $this->chocoblastService->findActiveOrNot(false);
+
+        return $this->render('chocoblast/showAllChocoblastInactive.html.twig', [
+            'chocoblasts' => $chocoblasts,
+        ]);
     }
 
+    #[IsGranted('ROLE_USER')]
+    #[Route('/chocoblast/active/{id}', name: 'app_chocoblast_active')]
+    public function activeChocoblast($id): Response
+    {
+        $chocoblast = $this->chocoblastService->findOneBy($id);
+        $chocoblast->setStatus(true);
+        $this->chocoblastService->update($chocoblast);
+        return $this->redirectToRoute('app_chocoblast_all_inactive');
+    }
+
+    #[Route('/chocoblast/top/auteur', name:'app_chocoblast_top_auteur')]
+    public function topAuthor():Response
+    {
+        $topAuthor = $this->chocoblastService->getCountChocoblastAuthor();
+        $json = $this->json($topAuthor);
+        return $this->render('chocoblast/topAuteur.html.twig', [
+            'topAuthor'=> $json->getContent(),
+        ]);
+    }
+
+    #[Route('/chocoblast/top/cible', name:'app_chocoblast_top_cible')]
+    public function topTarget():Response
+    {
+        $topTarget = $this->chocoblastService->getCountChocoblastTarget();
+        $json = $this->json($topTarget);
+        return $this->render('chocoblast/topTarget.html.twig', [
+            'topTarget'=> $json->getContent(),
+        ]);
+    }
+    #[Route('/chocoblast/top', name:'app_chocoblast_top')]
+    public function top():Response
+    {
+        return $this->render('chocoblast/topGraph.html.twig');
+    }
 }
