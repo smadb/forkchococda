@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d13aa9c9-58f0-4a76-83dd-9507f6fac97f" name="Changes" comment="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files.">
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chocoblast/manageChocoblast.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chocoblast/showChocoblast.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/users/showAllUsers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="d13aa9c9-58f0-4a76-83dd-9507f6fac97f" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/templates/chocoblast/showAllUsers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_09_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_09_55__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ChocoblastController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ChocoblastController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ChocoblastRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ChocoblastRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CommentaryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentaryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_components/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_components/_navbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/chocoblast/showAllChocoblast.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chocoblast/showAllChocoblast.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chocoblast/showAllChocoblastInactive.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chocoblast/showChocoblast.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chocoblast/showChocoblast.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +183,7 @@
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-autocomplete" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-toggle-password" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -240,6 +241,7 @@
       <workItem from="1713252496716" duration="10035000" />
       <workItem from="1713338237162" duration="539000" />
       <workItem from="1713338826012" duration="48000" />
+      <workItem from="1713510519757" duration="1734000" />
     </task>
     <task id="LOCAL-00001" summary="Add necessary IDE and project configurations &#10;&#10;The commit adds configuration files for the project including dataSources.xml, vcs.xml, phpunit.xml, .env, codeception.xml, phpspec.xml, php.xml, modules.xml among others. These files specify settings for the IntelliJ IDEA IDE, PHPUnit tests, codeception, and database connection details in the .env file.">
       <option name="closed" value="true" />
@@ -289,7 +291,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713258591253</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit save">
+      <option name="closed" value="true" />
+      <created>1713510627725</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713510627725</updated>
+    </task>
+    <task id="LOCAL-00008" summary="merge">
+      <option name="closed" value="true" />
+      <created>1713511032220</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713511032220</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +332,8 @@
     <MESSAGE value="Refactor services and add new services&#10;&#10;The ServiceInterface has been moved under the interface directory. UserService now uses this interface instead of directly using the EntityManager. Two new services, CommentService and ChocoblastService, have been added following the same pattern. This updates the way objects are created in the RegisterController by delegating to the new UserService." />
     <MESSAGE value="Update password validation and .gitignore rules&#10;&#10;The minimum character requirement for password validation in the User entity has been reduced from 12 to 8. The change also includes an updated error message to reflect this new requirement. In addition, the .gitignore file has been updated to now explicitly ignore .env files." />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="commit save" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>

@@ -57,7 +57,6 @@ class ChocoblastController extends AbstractController
     public function showAllChocoblast(ChocoblastService $chocoblastService):Response
     {
         $chocoblasts = $chocoblastService->findAll();
-        $chocoblasts = $this->chocoblastService->findActiveOrNot(true);
 
         return $this->render('chocoblast/showAllChocoblast.html.twig', [
             'chocoblasts' => $chocoblasts,
